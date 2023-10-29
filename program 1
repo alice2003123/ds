@@ -1,0 +1,65 @@
+#include<stdio.h>		//standard I/O header file
+#include<stdlib.h>		//standard library header file
+#define size 4//declaring the size to 5
+int top=-1,inp_arr[size],i;//declaring variables
+void push();
+void pop();
+void display();
+int main()//main fuction
+    {
+        int choice;
+        while(1)//checks the condition and enters the while loop
+            {
+                printf("Operation performed by stack\n");//printing statement
+                printf("1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n");//printing statement
+                printf("Enter the choice\n");//printing statement
+                scanf("%d",&choice);//store of value in variable
+                switch(choice)//switch statement initialization
+                    {
+                        case 1:push();//if option 1 go o push
+                        break;
+                        case 2:pop();//if option is 2 go to pop
+                        break;
+                        case 3:display();//if option is 3 go to display
+                        break;
+                        case 4:exit(0);//if option is 4 exit the loop
+                        default:printf("Invalid choice\n");//printing staement
+                    }
+            }
+    }
+void push()//push function
+    {
+        int x;
+        if(top==size-1)//condition check
+            printf("Overflow\n");
+        else
+            {
+                printf("Enter the element to be inserted:\n");
+                scanf("%d",&x);//the element to be inserted in stack
+                top=top+1;//top value increased
+                inp_arr[top]=x;
+            }
+    }
+void pop()  //pop function
+    {
+        if(top==-1)//condition check
+            printf("Underflow\n");
+        else
+            {
+                printf("Popped the element %d\n",inp_arr[top]);
+                top=top-1;//decrement of top
+            }
+    }
+void display()//display function
+    {
+        if(top>=0)//condition check
+            {
+            printf("Elements in the stack:\n");
+            for(i=top;i>=0;i--)// loop for printing the elements in stack
+                {
+                    printf("%d\n",inp_arr[i]);// I value decides the place of top
+                }
+            }
+        else
+            printf("Stack is empty\n");//empty stack, no elements present
+    }
