@@ -1,0 +1,98 @@
+#include<stdio.h>//standard I/O header file
+#include<stdlib.h>//standard library header file
+void push();
+void pop();
+void display();
+int main()
+    {
+        int choice;//declaring variables
+while(1)//checks the condition and enters the while loop
+        {
+printf("Operation performed by stack\n");//printing statement
+            printf("1.push\n2.Pop\n3.Display\n4.Exit\n");//printing statement
+printf("Enter the choice\n");//printing statement
+scanf("%d",&choice);//store of value in variable
+            switch(choice)//switch statement initialization
+            {
+                case 1:push();//if option 1 go o push
+                break;
+                case 2:pop();if option is 2 go to pop
+                break;
+                case 3:display();//if option is 3 go to display
+                break;
+                case 4:exit(0);//if option is 4 exit the loop
+		default:printf("Invalid choice\n");//printing statement
+            }
+        }
+    }
+struct node
+    {
+        int val;
+        struct node *next;
+    };
+struct node *head;
+void push()
+    {
+        int val;
+        struct node *ptr=(struct node*)malloc(sizeof(struct node));
+        if(ptr==NULL)//condition check
+        {
+printf("Not able to push the element\n");//printing statement
+        }
+        else
+        {
+printf("Enter the value\n");//printing statement
+scanf("%d",&val);//store of value in variable
+        }
+        if(head==NULL)//condition check
+        {
+ptr->val=val;
+ptr->next=NULL;
+            head=ptr;
+        }
+        else
+        {
+            {
+ptr->val=val;
+ptr->next=head;
+                head=ptr;
+            }
+printf("Item pushed\n");//printing statement
+        }
+    }
+void pop()
+    {
+        int item;
+        struct node *ptr;
+        if(head==NULL)//condition check
+        {
+printf("Underflow\n");//printing statement
+        }
+        else
+        {
+            item=head->val;
+ptr=head;
+            head=head->next;
+            free(ptr);
+printf("Item popped\n");//printing statement
+        }
+    }
+void display()
+    {
+        int i;
+        struct node *ptr;
+ptr=head;
+        if(ptr==NULL)//condition check
+        {
+printf("Stack is empty\n");//printing statement
+        }
+        else
+        {
+printf("printing stack\n");//printing statement
+            while(ptr!=NULL)//condition check
+            {
+printf("%d\n",ptr->val);//printing elements
+ptr=ptr->next;
+            }
+        }
+    }
